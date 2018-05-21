@@ -1,4 +1,4 @@
 # I put my sioworkers repo in this repo and don't want it tracked
 sioworkers/
-
+private/
 .idea/

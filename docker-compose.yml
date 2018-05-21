@@ -32,6 +32,8 @@ services:
       - vpn
     environment:
       TZ: 'EST5EDT'
+      FILETRACKER_URL: 'http://10.0.2.15:9999/'
+      SIOWORKERSD_HOST: '10.0.2.15'
     network_mode: "service:vpn"
     restart: unless-stopped
     stdin_open: true
