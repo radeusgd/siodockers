@@ -19,6 +19,9 @@ RUN pip install librabbitmq
 RUN apt-get update
 RUN apt-get -y install less vim wget netcat tcpdump
 
+RUN mkdir -p /home/appuser
+RUN chown appuser /home/appuser
+
 USER appuser
 # ENV FILETRACKER_URL=http://172.17.0.1:9999/
 # ENV SIOWORKERSD_HOST=172.17.0.1
@@ -29,6 +32,7 @@ USER appuser
 
 #ADD security/limits.conf sioworkers/security/limits.conf
 #ADD a.cpp a.cpp
+
 
 ADD supervisor.sh /spr4g/sioworkers/supervisor.sh
 ADD supervisord-conf-vars.conf /spr4g/sioworkers/config/supervisord-conf-vars.conf
