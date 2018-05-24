@@ -1,4 +1,4 @@
-version: '3.4'
+version: '2'
 
 services:
   vpn:
@@ -32,8 +32,8 @@ services:
       - vpn
     environment:
       TZ: 'EST5EDT'
-      FILETRACKER_URL: 'http://10.0.2.15:9999/'
-      SIOWORKERSD_HOST: '10.0.2.15'
+      FILETRACKER_URL: 'http://db0:39999/'
+      SIOWORKERSD_HOST: 'glados'
     network_mode: "service:vpn"
     restart: unless-stopped
     stdin_open: true

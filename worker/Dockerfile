@@ -22,6 +22,8 @@ RUN apt-get -y install less vim wget netcat tcpdump
 RUN mkdir -p /home/appuser
 RUN chown appuser /home/appuser
 
+ADD resolv.conf /etc/resolv.conf
+
 USER appuser
 # ENV FILETRACKER_URL=http://172.17.0.1:9999/
 # ENV SIOWORKERSD_HOST=172.17.0.1
