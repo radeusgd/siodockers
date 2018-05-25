@@ -17,12 +17,14 @@ RUN pip install librabbitmq
 
 # for debugging \/
 RUN apt-get update
-RUN apt-get -y install less vim wget netcat tcpdump
+RUN apt-get -y install less vim wget netcat tcpdump dnsutils
 
 RUN mkdir -p /home/appuser
 RUN chown appuser /home/appuser
 
-ADD resolv.conf /etc/resolv.conf
+RUN apt-get -y install sudo
+
+ADD resolv.conf /spr4g/resolv.conf
 
 USER appuser
 # ENV FILETRACKER_URL=http://172.17.0.1:9999/
@@ -45,6 +47,7 @@ WORKDIR /spr4g/sioworkers
 RUN mkdir -p logs
 RUN mkdir -p pidfiles
 
+USER root
 #ENTRYPOINT sio-celery-worker -c $CONC -l $MODE -Q $QUEUES "amqp://guest:guest@$OIOIOI:5672/"
 #ENTRYPOINT twistd -n -l- worker -c 2 192
 ENTRYPOINT ./start.sh

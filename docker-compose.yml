@@ -10,6 +10,8 @@ services:
       TZ: 'EST5EDT'
     networks:
       - default
+#    dns: 172.31.0.71
+#    dns_search: dasie.mimuw.edu.pl
     read_only: true
     tmpfs:
       - /tmp
