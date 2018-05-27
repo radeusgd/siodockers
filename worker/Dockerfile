@@ -19,6 +19,10 @@ RUN dpkg  --add-architecture i386
 RUN apt-get update
 RUN apt-get install -y less netcat vim libc6:i386 libstdc++6:i386 libdwarf1:i386
 
+#some linker hacks that seem to be needed
+RUN ln -s /usr/lib/i386-linux-gnu/libdwarf.so.1 /usr/lib/i386-linux-gnu/libdwarf.so
+RUN ln -s /usr/lib/i386-linux-gnu/libelf.so.0 /usr/lib/i386-linux-gnu/libelf-0.168.so
+
 # for debugging \/
 RUN apt-get update
 RUN apt-get -y install less vim wget netcat tcpdump dnsutils
