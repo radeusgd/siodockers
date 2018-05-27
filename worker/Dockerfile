@@ -15,6 +15,10 @@ USER root
 RUN pip install -e sioworkers/
 RUN pip install librabbitmq
 
+RUN dpkg  --add-architecture i386
+RUN apt-get update
+RUN apt-get install -y less netcat vim libc6:i386 libstdc++6:i386 libdwarf1:i386
+
 # for debugging \/
 RUN apt-get update
 RUN apt-get -y install less vim wget netcat tcpdump dnsutils
@@ -30,9 +34,6 @@ USER appuser
 # ENV FILETRACKER_URL=http://172.17.0.1:9999/
 # ENV SIOWORKERSD_HOST=172.17.0.1
 
-#RUN dpkg  --add-architecture i386
-#RUN apt-get update
-#RUN apt-get install -y less netcat vim libc6:i386 libstdc++6:i386
 
 #ADD security/limits.conf sioworkers/security/limits.conf
 #ADD a.cpp a.cpp
